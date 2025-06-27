@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Urgent Sale - Agriport</title>
+    <link rel="stylesheet" href="addproduct.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-exclamation-triangle"></i> Add New Urgent Sale</h1>
+        <p class="subtitle">List perishable products that need to be sold quickly at a discounted price</p>
+
+        <form id="urgentSaleForm">
+            <label for="productName">Product Name</label>
+            <input type="text" id="productName" name="productName" placeholder="e.g. Ripe Tomatoes" required>
+
+            <div class="row">
+                <div class="column">
+                    <label for="originalPrice">Original Price</label>
+                    <input type="text" id="originalPrice" name="originalPrice" placeholder="e.g. CFA 30/kg" required>
+                </div>
+                <div class="column">
+                    <label for="reducedPrice">Reduced Price</label>
+                    <input type="text" id="reducedPrice" name="reducedPrice" placeholder="e.g. CFA 20/kg" required>
+                    <small class="price-hint">Must be lower than original price</small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="column">
+                    <label for="quantity">Quantity</label>
+                    <input type="text" id="quantity" name="quantity" placeholder="e.g. 15 kg" required>
+                </div>
+                <div class="column">
+                    <label for="bestBefore">Best Before Date</label>
+                    <input type="date" id="bestBefore" name="bestBefore" required>
+                    <small class="date-hint">Must be a future date</small>
+                </div>
+            </div>
+
+            <label for="reason">Reason for Urgent Sale</label>
+            <input type="text" id="reason" name="reason" placeholder="e.g. Excess harvest, approaching expiry date" required>
+
+            <div class="image-upload-container">
+                <label for="productImage">Product Image</label>
+                <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                <div id="imagePreview" class="image-preview">
+                    <p>Image preview will appear here</p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="cancelButton" class="secondary-button">Cancel</button>
+                <button type="submit" id="submitButton" class="primary-button">Save Urgent Sale</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Notification element -->
+    <div id="notification" class="notification" style="display: none;">
+        <div class="notification-content">
+            <i id="notificationIcon" class="fas fa-check-circle"></i>
+            <span id="notificationMessage">Operation successful</span>
+        </div>
+    </div>
+
+    <script src="../endpoint/API integratiion.js"></script>
+    <script src="auth.js"></script>
+    <script src="addurgentsale.js"></script>
+</body>
+</html>

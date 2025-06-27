@@ -1,0 +1,872 @@
+<div class="header">
+    <h1><i class="fas fa-list"></i> My Product Listings</h1>
+    <p class="subtitle">Manage your products and track their performance</p>
+    <div class="header-actions">
+        <button class="message-btn" onclick="alert('Messaging system - requires server')" title="Messages">
+            <i class="fas fa-comments"></i>
+            <span class="message-badge">2</span>
+        </button>
+        <div class="notification-bell" onclick="alert('Notification system - requires server')">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+        </div>
+    </div>
+</div>
+
+<div class="listings-container">
+    <!-- Loading Indicator -->
+    <div id="listingsLoading" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Loading your listings...</p>
+    </div>
+
+    <!-- Listings Content -->
+    <div id="listingsContent" style="display: none;">
+        <!-- Listings Controls -->
+        <div class="listings-controls">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search your listings..." class="search-input">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <div class="filter-container">
+                <select id="statusFilter" class="filter-select">
+                    <option value="">All Status</option>
+                    <option value="Available">Available</option>
+                    <option value="Reserved">Reserved</option>
+                    <option value="Sold">Sold</option>
+                </select>
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                </select>
+            </div>
+            <button class="btn-primary" onclick="loadContent('addproduct')">
+                <i class="fas fa-plus"></i> Add New Listing
+            </button>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="listings-summary">
+            <div class="summary-card">
+                <div class="summary-icon available">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="summary-content">
+                    <div class="summary-number" id="availableCount">0</div>
+                    <div class="summary-label">Available</div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon reserved">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="summary-content">
+                    <div class="summary-number" id="reservedCount">0</div>
+                    <div class="summary-label">Reserved</div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon sold">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="summary-content">
+                    <div class="summary-number" id="soldCount">0</div>
+                    <div class="summary-label">Sold</div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon total">
+                    <i class="fas fa-list"></i>
+                </div>
+                <div class="summary-content">
+                    <div class="summary-number" id="totalCount">0</div>
+                    <div class="summary-label">Total Listings</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listings by Category -->
+        <div id="listingsByCategory">
+            <!-- Categories will be dynamically loaded here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <div class="empty-icon">
+                <i class="fas fa-seedling"></i>
+            </div>
+            <h3>No Products Listed Yet</h3>
+            <p>Start by adding your first product to the marketplace.</p>
+            <button class="btn-primary" onclick="loadContent('addproduct')">
+                <i class="fas fa-plus"></i> Add Your First Product
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Listing Modal -->
+<div id="editListingModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fas fa-edit"></i> Edit Listing</h3>
+            <button type="button" class="modal-close" onclick="closeEditModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="editListingForm">
+                <input type="hidden" id="editListingId">
+                <div class="form-group">
+                    <label for="editProductName">Product Name *</label>
+                    <input type="text" id="editProductName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editDescription">Description</label>
+                    <textarea id="editDescription" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editQuantity">Quantity *</label>
+                        <input type="number" id="editQuantity" required min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="editPrice">Price (XAF) *</label>
+                        <input type="number" id="editPrice" required min="0" step="50">
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeEditModal()" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+/* My Listings Specific Styles */
+.listings-container {
+    padding: 20px;
+}
+
+.loading-indicator {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #2c5530;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.listings-controls {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-container {
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 40px 12px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.filter-container {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    min-width: 150px;
+}
+
+.listings-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.summary-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+}
+
+.summary-icon.available { background: #4CAF50; }
+.summary-icon.reserved { background: #FF9800; }
+.summary-icon.sold { background: #2196F3; }
+.summary-icon.total { background: #9C27B0; }
+
+.summary-content .summary-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c5530;
+}
+
+.summary-content .summary-label {
+    font-size: 14px;
+    color: #666;
+}
+
+.category-section {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.category-header {
+    background: #2c5530;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-header h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-count {
+    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.listing-card {
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.listing-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.listing-image {
+    position: relative;
+    height: 150px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listing-image i {
+    font-size: 48px;
+    color: #ddd;
+}
+
+.listing-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.listing-status.available {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.listing-status.reserved {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.listing-status.sold {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.listing-content {
+    padding: 15px;
+}
+
+.listing-content h3 {
+    margin: 0 0 5px 0;
+    color: #2c5530;
+    font-size: 16px;
+}
+
+.listing-description {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.listing-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.detail-item .label {
+    color: #666;
+}
+
+.detail-item .value {
+    font-weight: 600;
+    color: #2c5530;
+}
+
+.listing-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-primary.btn-sm {
+    background: #2c5530;
+    color: white;
+}
+
+.btn-secondary.btn-sm {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-danger.btn-sm {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-sm:hover {
+    opacity: 0.9;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.empty-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2c5530, #4CAF50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.empty-icon i {
+    font-size: 32px;
+    color: white;
+}
+
+.empty-state h3 {
+    color: #2c5530;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #2c5530;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c5530;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .listings-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-container {
+        flex-direction: column;
+    }
+    
+    .listings-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+// Initialize My Listings functionality
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('listingsContent')) {
+        initializeMyListings();
+    }
+});
+
+function initializeMyListings() {
+    loadFarmerListings();
+    setupSearchAndFilters();
+    setupEditModal();
+}
+
+// Load farmer's listings from API
+async function loadFarmerListings() {
+    try {
+        const response = await fetch('/api/farmer/listings/', {
+            headers: {
+                'Authorization': `Token ${getAuthToken()}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            displayListings(data.listings);
+            updateSummaryStats(data.listings);
+        } else {
+            showError('Failed to load listings');
+        }
+    } catch (error) {
+        console.error('Error loading listings:', error);
+        showError('Error loading listings');
+    } finally {
+        document.getElementById('listingsLoading').style.display = 'none';
+        document.getElementById('listingsContent').style.display = 'block';
+    }
+}
+
+// Display listings grouped by category
+function displayListings(listings) {
+    const container = document.getElementById('listingsByCategory');
+    
+    if (listings.length === 0) {
+        document.getElementById('emptyState').style.display = 'block';
+        return;
+    }
+    
+    // Group listings by category
+    const listingsByCategory = {};
+    listings.forEach(listing => {
+        listing.categories.forEach(category => {
+            if (!listingsByCategory[category.name]) {
+                listingsByCategory[category.name] = [];
+            }
+            listingsByCategory[category.name].push(listing);
+        });
+    });
+    
+    // Create category sections
+    container.innerHTML = '';
+    for (const [categoryName, categoryListings] of Object.entries(listingsByCategory)) {
+        const categorySection = createCategorySection(categoryName, categoryListings);
+        container.appendChild(categorySection);
+    }
+}
+
+// Create category section
+function createCategorySection(categoryName, listings) {
+    const section = document.createElement('div');
+    section.className = 'category-section';
+    
+    section.innerHTML = `
+        <div class="category-header">
+            <h3>
+                <i class="fas fa-seedling"></i>
+                ${categoryName}
+            </h3>
+            <span class="category-count">${listings.length} products</span>
+        </div>
+        <div class="listings-grid">
+            ${listings.map(listing => createListingCard(listing)).join('')}
+        </div>
+    `;
+    
+    return section;
+}
+
+// Create listing card
+function createListingCard(listing) {
+    const statusClass = listing.status.toLowerCase();
+    
+    return `
+        <div class="listing-card" data-listing-id="${listing.listing_id}">
+            <div class="listing-image">
+                ${listing.image_url ? 
+                    `<img src="${listing.image_url}" alt="${listing.product_name}" style="width: 100%; height: 100%; object-fit: cover;">` :
+                    `<i class="fas fa-seedling"></i>`
+                }
+                <div class="listing-status ${statusClass}">${listing.status}</div>
+            </div>
+            <div class="listing-content">
+                <h3>${listing.product_name}</h3>
+                ${listing.description ? `<div class="listing-description">${listing.description}</div>` : ''}
+                <div class="listing-details">
+                    <div class="detail-item">
+                        <span class="label">Price:</span>
+                        <span class="value">${listing.price} XAF/${listing.quantity_unit}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Quantity:</span>
+                        <span class="value">${listing.quantity} ${listing.quantity_unit}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Status:</span>
+                        <span class="value">${listing.status}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Listed:</span>
+                        <span class="value">${new Date(listing.created_at).toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="listing-actions">
+                    <button class="btn-primary btn-sm" onclick="editListing(${listing.listing_id})">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn-secondary btn-sm" onclick="viewListingDetails(${listing.listing_id})">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    ${listing.status === 'Available' ? 
+                        `<button class="btn-danger btn-sm" onclick="deleteListing(${listing.listing_id})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>` : ''
+                    }
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Update summary statistics
+function updateSummaryStats(listings) {
+    const stats = {
+        available: listings.filter(l => l.status === 'Available').length,
+        reserved: listings.filter(l => l.status === 'Reserved').length,
+        sold: listings.filter(l => l.status === 'Sold').length,
+        total: listings.length
+    };
+    
+    document.getElementById('availableCount').textContent = stats.available;
+    document.getElementById('reservedCount').textContent = stats.reserved;
+    document.getElementById('soldCount').textContent = stats.sold;
+    document.getElementById('totalCount').textContent = stats.total;
+}
+
+// Setup search and filters
+function setupSearchAndFilters() {
+    const searchInput = document.getElementById('searchInput');
+    const statusFilter = document.getElementById('statusFilter');
+    const categoryFilter = document.getElementById('categoryFilter');
+    
+    searchInput.addEventListener('input', filterListings);
+    statusFilter.addEventListener('change', filterListings);
+    categoryFilter.addEventListener('change', filterListings);
+}
+
+// Filter listings
+function filterListings() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const statusFilter = document.getElementById('statusFilter').value;
+    const categoryFilter = document.getElementById('categoryFilter').value;
+    
+    const listingCards = document.querySelectorAll('.listing-card');
+    
+    listingCards.forEach(card => {
+        const productName = card.querySelector('h3').textContent.toLowerCase();
+        const status = card.querySelector('.listing-status').textContent;
+        const categorySection = card.closest('.category-section');
+        const categoryName = categorySection.querySelector('.category-header h3').textContent.trim();
+        
+        const matchesSearch = productName.includes(searchTerm);
+        const matchesStatus = !statusFilter || status === statusFilter;
+        const matchesCategory = !categoryFilter || categoryName.includes(categoryFilter);
+        
+        card.style.display = (matchesSearch && matchesStatus && matchesCategory) ? 'block' : 'none';
+    });
+}
+
+// Edit listing
+function editListing(listingId) {
+    // This would fetch the listing details and populate the edit modal
+    // For now, we'll show a placeholder
+    alert(`Edit listing ${listingId} - This will open the edit modal with current listing data`);
+}
+
+// View listing details
+function viewListingDetails(listingId) {
+    alert(`View details for listing ${listingId} - This will show detailed view with reservations`);
+}
+
+// Delete listing
+async function deleteListing(listingId) {
+    if (!confirm('Are you sure you want to delete this listing?')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/farmer/listings/${listingId}/`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Token ${getAuthToken()}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            // Remove the listing card from the UI
+            const listingCard = document.querySelector(`[data-listing-id="${listingId}"]`);
+            if (listingCard) {
+                listingCard.remove();
+            }
+            alert('Listing deleted successfully');
+        } else {
+            alert('Error deleting listing');
+        }
+    } catch (error) {
+        console.error('Error deleting listing:', error);
+        alert('Error deleting listing');
+    }
+}
+
+// Setup edit modal
+function setupEditModal() {
+    document.getElementById('editListingForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const listingId = document.getElementById('editListingId').value;
+        const formData = {
+            product_name: document.getElementById('editProductName').value,
+            description: document.getElementById('editDescription').value,
+            quantity: parseInt(document.getElementById('editQuantity').value),
+            price: parseFloat(document.getElementById('editPrice').value)
+        };
+        
+        try {
+            const response = await fetch(`/api/farmer/listings/${listingId}/`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Token ${getAuthToken()}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                closeEditModal();
+                loadFarmerListings(); // Reload listings
+                alert('Listing updated successfully');
+            } else {
+                alert('Error updating listing');
+            }
+        } catch (error) {
+            console.error('Error updating listing:', error);
+            alert('Error updating listing');
+        }
+    });
+}
+
+// Close edit modal
+function closeEditModal() {
+    document.getElementById('editListingModal').style.display = 'none';
+    document.getElementById('editListingForm').reset();
+}
+
+// Show error message
+function showError(message) {
+    const container = document.getElementById('listingsByCategory');
+    container.innerHTML = `
+        <div class="error-message">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Error Loading Listings</h3>
+            <p>${message}</p>
+            <button class="btn-primary" onclick="loadFarmerListings()">
+                <i class="fas fa-refresh"></i> Try Again
+            </button>
+        </div>
+    `;
+}
+
+// Get auth token
+function getAuthToken() {
+    return localStorage.getItem('farmerToken') || '';
+}
+</script>

@@ -1,0 +1,337 @@
+<div class="header">
+    <h1><i class="fas fa-cog"></i> Account Settings</h1>
+    <p class="subtitle">Manage your account preferences and security settings</p>
+    <div class="notification-bell">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge">3</span>
+    </div>
+</div>
+
+<div class="settings-container">
+    <!-- Settings Tabs -->
+    <div class="settings-tabs">
+        <button class="tab-button active" data-tab="account">
+            <i class="fas fa-user"></i> Account
+        </button>
+        <button class="tab-button" data-tab="notifications">
+            <i class="fas fa-bell"></i> Notifications
+        </button>
+        <button class="tab-button" data-tab="privacy">
+            <i class="fas fa-shield-alt"></i> Privacy
+        </button>
+        <button class="tab-button" data-tab="security">
+            <i class="fas fa-lock"></i> Security
+        </button>
+    </div>
+    
+    <!-- Account Settings Tab -->
+    <div id="account" class="tab-content active">
+        <div class="settings-section">
+            <h3><i class="fas fa-user-edit"></i> Personal Information</h3>
+            <form id="personalInfoForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" value="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" value="Farmer" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" value="john.farmer@example.com" required>
+                        <small class="form-hint">Used for notifications and account recovery</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" value="+237 6XX XXX XXX" required>
+                        <small class="form-hint">Used for SMS notifications and buyer contact</small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Farm Location</label>
+                    <input type="text" id="location" name="location" value="Douala, Cameroon" required>
+                    <small class="form-hint">Help buyers find your products</small>
+                </div>
+                
+                <button type="submit" class="save-btn">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </form>
+        </div>
+        
+        <div class="settings-section">
+            <h3><i class="fas fa-globe"></i> Language & Region</h3>
+            <form id="languageForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="language">Language</label>
+                        <select id="language" name="language">
+                            <option value="en">English</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="currency">Currency</label>
+                        <select id="currency" name="currency">
+                            <option value="XAF">CFA Franc (XAF)</option>
+                            <option value="USD">US Dollar (USD)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="save-btn">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Notifications Settings Tab -->
+    <div id="notifications" class="tab-content">
+        <div class="settings-section">
+            <h3><i class="fas fa-bell-slash"></i> Notification Preferences</h3>
+            <form id="notificationForm">
+                <div class="notification-group">
+                    <h4>Email Notifications</h4>
+                    <div class="toggle-group">
+                        <div class="toggle-item">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="emailReservations" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-info">
+                                <span class="toggle-title">New Reservations</span>
+                                <span class="toggle-desc">Get notified when buyers reserve your products</span>
+                            </div>
+                        </div>
+                        
+                        <div class="toggle-item">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="emailSales" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-info">
+                                <span class="toggle-title">Sales Confirmations</span>
+                                <span class="toggle-desc">Get notified when sales are completed</span>
+                            </div>
+                        </div>
+                        
+                        <div class="toggle-item">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="emailMessages" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-info">
+                                <span class="toggle-title">Messages from Buyers</span>
+                                <span class="toggle-desc">Get notified when buyers send you messages</span>
+                            </div>
+                        </div>
+                        
+                        <div class="toggle-item">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="emailAdmin" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-info">
+                                <span class="toggle-title">Admin Announcements</span>
+                                <span class="toggle-desc">Get notified about system updates and announcements</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="notification-group">
+                    <h4>SMS Notifications</h4>
+                    <div class="toggle-group">
+                        <div class="toggle-item">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="smsReservations" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-info">
+                                <span class="toggle-title">Urgent Reservations</span>
+                                <span class="toggle-desc">Get SMS for time-sensitive reservations</span>
+                            </div>
+                        </div>
+                        
+                        <div class="toggle-item">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="smsPayments">
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-info">
+                                <span class="toggle-title">Payment Confirmations</span>
+                                <span class="toggle-desc">Get SMS when payments are received</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="notification-group">
+                    <h4>Dashboard Notifications</h4>
+                    <div class="toggle-group">
+                        <div class="toggle-item">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="dashboardAll" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-info">
+                                <span class="toggle-title">All Notifications</span>
+                                <span class="toggle-desc">Show all notifications in dashboard bell</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="save-btn">
+                    <i class="fas fa-save"></i> Save Notification Settings
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Privacy Settings Tab -->
+    <div id="privacy" class="tab-content">
+        <div class="settings-section">
+            <h3><i class="fas fa-eye"></i> Profile Visibility</h3>
+            <form id="privacyForm">
+                <div class="toggle-group">
+                    <div class="toggle-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="publicProfile" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <div class="toggle-info">
+                            <span class="toggle-title">Public Profile</span>
+                            <span class="toggle-desc">Allow buyers to view your farmer profile</span>
+                        </div>
+                    </div>
+                    
+                    <div class="toggle-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="showLocation" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <div class="toggle-info">
+                            <span class="toggle-title">Show Farm Location</span>
+                            <span class="toggle-desc">Display your farm location to buyers</span>
+                        </div>
+                    </div>
+                    
+                    <div class="toggle-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="showContact">
+                            <span class="slider"></span>
+                        </label>
+                        <div class="toggle-info">
+                            <span class="toggle-title">Show Contact Information</span>
+                            <span class="toggle-desc">Allow buyers to see your phone number</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="save-btn">
+                    <i class="fas fa-save"></i> Save Privacy Settings
+                </button>
+            </form>
+        </div>
+        
+        <div class="settings-section">
+            <h3><i class="fas fa-trash"></i> Data Management</h3>
+            <div class="danger-zone">
+                <div class="danger-item">
+                    <div class="danger-info">
+                        <span class="danger-title">Download Your Data</span>
+                        <span class="danger-desc">Download a copy of all your data</span>
+                    </div>
+                    <button class="danger-btn secondary">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+                
+                <div class="danger-item">
+                    <div class="danger-info">
+                        <span class="danger-title">Delete Account</span>
+                        <span class="danger-desc">Permanently delete your account and all data</span>
+                    </div>
+                    <button class="danger-btn primary" id="deleteAccountBtn">
+                        <i class="fas fa-trash"></i> Delete Account
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Security Settings Tab -->
+    <div id="security" class="tab-content">
+        <div class="settings-section">
+            <h3><i class="fas fa-key"></i> Change Password</h3>
+            <form id="passwordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" name="currentPassword" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" name="newPassword" required>
+                        <small class="form-hint">At least 8 characters with numbers and symbols</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm New Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="save-btn">
+                    <i class="fas fa-save"></i> Update Password
+                </button>
+            </form>
+        </div>
+        
+        <div class="settings-section">
+            <h3><i class="fas fa-mobile-alt"></i> Two-Factor Authentication</h3>
+            <div class="security-status">
+                <div class="status-item">
+                    <div class="status-info">
+                        <span class="status-title">SMS Authentication</span>
+                        <span class="status-desc">Add extra security with SMS verification</span>
+                    </div>
+                    <button class="enable-btn">
+                        <i class="fas fa-plus"></i> Enable
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-section">
+            <h3><i class="fas fa-history"></i> Login Activity</h3>
+            <div class="activity-list">
+                <div class="activity-item">
+                    <div class="activity-info">
+                        <span class="activity-device">Mobile Device</span>
+                        <span class="activity-location">Douala, Cameroon</span>
+                        <span class="activity-time">2 hours ago</span>
+                    </div>
+                    <span class="activity-status current">Current Session</span>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-info">
+                        <span class="activity-device">Desktop Computer</span>
+                        <span class="activity-location">Yaoundé, Cameroon</span>
+                        <span class="activity-time">1 day ago</span>
+                    </div>
+                    <button class="revoke-btn">Revoke</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

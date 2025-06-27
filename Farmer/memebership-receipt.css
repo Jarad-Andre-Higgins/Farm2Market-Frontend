@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fdfaf3;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .receipt-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    font-size: 24px;
+    color: #222;
+    margin-bottom: 5px;
+  }
+  
+  .subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .tab-bar {
+    display: flex;
+    border-radius: 8px;
+    background-color: #f0f2f5;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+  }
+  
+  .tab.active {
+    background-color: #fff;
+    border-bottom: 3px solid #8DB600;
+    color: #111;
+  }
+  
+  .receipt-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .receipt-form input[type="text"],
+  .receipt-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  
+  .upload-box {
+    margin-top: 10px;
+    border: 2px dashed #8DB600;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+    color: #555;
+  }
+  
+  .upload-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .upload-box input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .upload-btn {
+    margin-top: 20px;
+    background-color: #8DB600;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .upload-btn:hover {
+    background-color: #7aa000;
+  }
+  

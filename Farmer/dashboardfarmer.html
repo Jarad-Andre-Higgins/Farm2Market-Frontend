@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard - Farm2Market</title>
+    <link rel="stylesheet" href="farmer dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="farmer dashboard.js"></script>
+</head>
+<body>
+    <div id="notificationContainer" class="notification-container"></div>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="dashboard">
+        <!-- Enhanced Sidebar Navigation -->
+        <div class="sidebar" id="sidebar">
+            <button class="toggle-sidebar" id="toggleSidebar">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="sidebar-header">
+                <div class="farmer-profile-summary">
+                    <img id="farmerProfileImage" src="../assets/default-profile.jpg" alt="Farmer Profile">
+                    <div class="farmer-info">
+                        <h1>Farm2Market</h1>
+                        <h3>Farmer's Dashboard</h3>
+                        <span class="trust-badge">Verified <i class="fas fa-check"></i></span>
+                        <span id="farmerName" class="farmer-name">John Farmer</span>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <!-- Dashboard -->
+                <li>
+                    <a href="#dashboard" class="active">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                        <span class="tooltip">Dashboard Overview</span>
+                    </a>
+                </li>
+                
+                <!-- Product Management -->
+                <li>
+                    <a href="#mylisting">
+                        <i class="fas fa-list"></i>
+                        <span>Product Listings</span>
+                        <span class="tooltip">Manage your products</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#addproduct">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Add New Product</span>
+                        <span class="tooltip">Create new listing</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#addurgentsale">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Add Urgent Sale</span>
+                        <span class="tooltip">Create discounted listing</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#editlisting">
+                        <i class="fas fa-edit"></i>
+                        <span>Edit Listings</span>
+                        <span class="tooltip">Update your products</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#reservations">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Reservations</span>
+                        <span class="tooltip">Manage reservations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#saleshistory">
+                        <i class="fas fa-receipt"></i>
+                        <span>Sales History</span>
+                        <span class="tooltip">View sales and earnings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#profile">
+                        <i class="fas fa-user"></i>
+                        <span>My Profile</span>
+                        <span class="tooltip">View and edit profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                        <span class="tooltip">Account settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                        <span class="tooltip">Sign out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+          <!-- Add scroll controls at the bottom -->
+        <div class="sidebar-footer">
+            <div class="scroll-controls">
+                <button id="scrollUp"><i class="fas fa-chevron-up"></i></button>
+                <button id="scrollDown"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="connection-status">
+                <span id="onlineStatus" class="online"><i class="fas fa-wifi"></i> Online</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="header-left">
+                    <h2 id="pageTitle">Dashboard</h2>
+                    <span id="lastUpdated" class="last-updated">Last updated: Just now</span>
+                </div>
+                <div class="header-right">
+                    <!-- Notifications -->
+                    <button id="notificationBtn" class="header-btn notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge">0</span>
+                    </button>
+
+                    <!-- Messages -->
+                    <button id="openMessaging" class="header-btn message-btn">
+                        <i class="fas fa-comments"></i>
+                        <span class="message-badge" id="messageBadge">0</span>
+                    </button>
+
+                    <!-- Profile Dropdown -->
+                    <div class="profile-dropdown">
+                        <button id="profileDropdownBtn" class="header-btn profile-btn">
+                            <img id="headerProfileImage" src="../assets/default-profile.jpg" alt="Profile">
+                            <span id="headerFarmerName">John Farmer</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" id="profileDropdownMenu">
+                            <a href="#profile" class="dropdown-item">
+                                <i class="fas fa-user"></i> My Profile
+                            </a>
+                            <a href="#settings" class="dropdown-item">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" id="headerLogoutBtn" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dashboardContent">
+                <!-- Content will load here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../endpoint/API integration.js"></script>
+    <script src="../js/notifications.js"></script>
+    <script src="../js/email-service.js"></script>
+    <script src="../js/messaging.js"></script>
+    <script src="../js/analytics.js"></script>
+    <script src="farmer dashboard.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css">
+    
+</body>
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load dashboard content by default
+        loadContent('dashboard');
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

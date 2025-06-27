@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Registration - Farm2Market</title>
+  <link rel="stylesheet" href="signupfarmer.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header-section">
+      <h1 class="page-title">AGRIPORT</h1>
+      <p class="intro-text">Create your farmer account to start selling your products.</p>
+    </div>
+    
+    <form id="farmerRegistrationForm" novalidate>
+      <h2>Personal Information</h2>
+      <div class="name-row">
+        <div class="form-group">
+          <input type="text" id="firstName" placeholder="First Name" required>
+          <span class="error-message" id="firstNameError"></span>
+        </div>
+        <div class="form-group">
+          <input type="text" id="lastName" placeholder="Last Name" required>
+          <span class="error-message" id="lastNameError"></span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <input type="text" id="phoneNumber" placeholder="Phone Number" required>
+        <span class="error-message" id="phoneNumberError"></span>
+        <small>Format: 6XXXXXXXX (Cameroon)</small>
+      </div>
+      
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Email" required>
+        <span class="error-message" id="emailError"></span>
+      </div>
+      
+      <div class="form-group">
+        <input type="text" id="location" placeholder="Location / Village" required>
+        <span class="error-message" id="locationError"></span>
+      </div>
+
+      <h2>Products Information</h2>
+      <div class="form-group">
+        <textarea id="productDescription" placeholder="Tell us about the products you sell (e.g., tomatoes, cassava, plantains, etc.)" rows="4" required></textarea>
+        <span class="error-message" id="productDescriptionError"></span>
+        <small>List all types of products you plan to sell on our platform</small>
+      </div>
+
+      <h2>Registration Fee Payment (2000 CFA)</h2>
+      <div class="payment-info">
+        <p>Please send payment to MoMo Number: <strong>675 XXX XXX</strong></p>
+        <p>After payment, upload your receipt below.</p>
+      </div>
+      
+      <div class="form-group">
+        <input type="text" id="senderName" placeholder="Sender Name (as shown on receipt)" required>
+        <span class="error-message" id="senderNameError"></span>
+      </div>
+      
+      <div class="form-group">
+        <div class="file-upload">
+          <label for="receiptUpload">
+            <div class="upload-btn">📤 Upload Payment Receipt</div>
+          </label>
+          <input type="file" id="receiptUpload" accept="image/*" style="display: none;" required>
+          <div id="receiptFileName">No file chosen</div>
+          <span class="error-message" id="receiptError"></span>
+        </div>
+      </div>
+
+      <h2>ID Verification</h2>
+      <div class="form-group">
+        <select id="idType" required>
+          <option value="">ID Type</option>
+          <option value="National ID">National ID</option>
+          <option value="Passport">Passport</option>
+          <option value="Driver's License">Driver's License</option>
+        </select>
+        <span class="error-message" id="idTypeError"></span>
+      </div>
+
+      <div class="form-group">
+        <div class="file-upload">
+          <label for="idUpload">
+            <div class="upload-btn">📤 Upload Photo of ID</div>
+          </label>
+          <input type="file" id="idUpload" accept="image/*" style="display: none;" required>
+          <div id="idFileName">No file chosen</div>
+          <span class="error-message" id="idError"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="termsAgreement" required>
+          I agree to the <a href="../privacy-policy.html" target="_blank">Privacy Policy</a> and <a href="../terms-of-service.html" target="_blank">Terms of Service</a>
+        </label>
+        <span class="error-message" id="termsError"></span>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Registration</button>
+      <p class="note">Your account is pending verification. We will notify you after approval.</p>
+      <p class="login-link">Already have an account? <a href="loginfarmer.html">Login here</a></p>
+    </form>
+  </div>
+
+  <script src="signupfarmer.js"></script>
+</body>
+</html>

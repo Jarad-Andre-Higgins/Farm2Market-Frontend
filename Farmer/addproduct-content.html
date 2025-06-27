@@ -1,0 +1,739 @@
+<div class="header">
+    <h1><i class="fas fa-plus-circle"></i> Add New Product</h1>
+    <p class="subtitle">List a new product for buyers to discover</p>
+    <div class="header-actions">
+        <button class="message-btn" onclick="alert('Messaging system - requires server')" title="Messages">
+            <i class="fas fa-comments"></i>
+            <span class="message-badge">2</span>
+        </button>
+        <div class="notification-bell" onclick="alert('Notification system - requires server')">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+        </div>
+    </div>
+</div>
+
+<div class="add-product-container">
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+        <div class="spinner"></div>
+        <p>Adding product...</p>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message" style="display: none;">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Product Added Successfully!</h3>
+        <p>Your product has been listed and is now available for buyers.</p>
+        <div class="success-actions">
+            <button onclick="loadContent('mylisting')" class="btn-primary">
+                <i class="fas fa-list"></i> View My Listings
+            </button>
+            <button onclick="resetAddProductForm()" class="btn-secondary">
+                <i class="fas fa-plus"></i> Add Another Product
+            </button>
+        </div>
+    </div>
+
+    <!-- Add Product Form -->
+    <form id="addProductForm" class="product-form">
+        <div class="form-section">
+            <h2><i class="fas fa-box"></i> Product Information</h2>
+            
+            <div class="form-group">
+                <label for="productName">Product Name *</label>
+                <input type="text" id="productName" name="product_name" required 
+                       placeholder="e.g., Fresh Organic Tomatoes">
+                <div class="field-error" id="productNameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="productDescription">Product Description</label>
+                <textarea id="productDescription" name="description" rows="4" 
+                          placeholder="Describe your product quality, farming methods, etc."></textarea>
+                <div class="field-error" id="productDescriptionError"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="productCategory">Category *</label>
+                    <div class="category-input-group">
+                        <select id="productCategory" name="category_ids" required>
+                            <option value="">Loading categories...</option>
+                        </select>
+                        <button type="button" id="addCategoryBtn" class="btn-icon" title="Add New Category">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="field-error" id="productCategoryError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="productQuantity">Quantity *</label>
+                    <input type="number" id="productQuantity" name="quantity" required min="1" 
+                           placeholder="e.g., 50">
+                    <div class="field-error" id="productQuantityError"></div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="quantityUnit">Quantity Unit *</label>
+                    <select id="quantityUnit" name="quantity_unit" required>
+                        <option value="kg">Kilograms (kg)</option>
+                        <option value="bags">Bags</option>
+                        <option value="baskets">Baskets</option>
+                        <option value="cartoons">Cartoons</option>
+                        <option value="pieces">Pieces</option>
+                        <option value="bunches">Bunches</option>
+                        <option value="sacks">Sacks</option>
+                        <option value="crates">Crates</option>
+                    </select>
+                    <div class="field-error" id="quantityUnitError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="productPrice">Price per Unit (XAF) *</label>
+                    <input type="number" id="productPrice" name="price" required min="0" step="50" 
+                           placeholder="e.g., 1500">
+                    <div class="field-error" id="productPriceError"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2><i class="fas fa-image"></i> Product Image (Optional)</h2>
+            
+            <div class="image-upload-area" id="imageUploadArea">
+                <div class="upload-placeholder">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Click to upload product image</p>
+                    <small>Supported formats: JPG, PNG, GIF (Max 5MB)</small>
+                </div>
+                <input type="file" id="productImage" name="image" accept="image/*" style="display: none;">
+                <div class="image-preview" id="imagePreview" style="display: none;">
+                    <img id="previewImg" src="" alt="Product Preview">
+                    <button type="button" class="remove-image" onclick="removeImage()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="field-error" id="productImageError"></div>
+        </div>
+
+        <div class="form-actions">
+            <button type="button" onclick="loadContent('dashboard')" class="btn-secondary">
+                <i class="fas fa-arrow-left"></i> Cancel
+            </button>
+            <button type="submit" class="btn-primary" id="submitBtn">
+                <i class="fas fa-plus"></i> Add Product
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Add Category Modal -->
+<div id="addCategoryModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fas fa-plus"></i> Add New Category</h3>
+            <button type="button" class="modal-close" onclick="closeAddCategoryModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="addCategoryForm">
+                <div class="form-group">
+                    <label for="newCategoryName">Category Name *</label>
+                    <input type="text" id="newCategoryName" name="name" required 
+                           placeholder="e.g., Organic Vegetables">
+                    <div class="field-error" id="newCategoryNameError"></div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeAddCategoryModal()" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-plus"></i> Add Category
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Add Product Specific Styles */
+.add-product-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.loading-indicator {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #2c5530;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.success-message {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.success-icon i {
+    font-size: 32px;
+    color: white;
+}
+
+.success-message h3 {
+    color: #2c5530;
+    margin-bottom: 10px;
+}
+
+.success-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.product-form {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.form-section {
+    padding: 30px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+}
+
+.form-section h2 {
+    color: #2c5530;
+    margin-bottom: 20px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c5530;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2c5530;
+    box-shadow: 0 0 0 2px rgba(44, 85, 48, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.category-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.category-input-group select {
+    flex: 1;
+}
+
+.btn-icon {
+    background: #2c5530;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+}
+
+.btn-icon:hover {
+    background: #1e3a21;
+}
+
+.image-upload-area {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.image-upload-area:hover {
+    border-color: #2c5530;
+}
+
+.upload-placeholder i {
+    font-size: 48px;
+    color: #ccc;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.upload-placeholder p {
+    margin: 0 0 5px 0;
+    color: #666;
+    font-weight: 600;
+}
+
+.upload-placeholder small {
+    color: #999;
+}
+
+.image-preview {
+    position: relative;
+    display: inline-block;
+}
+
+.image-preview img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.remove-image {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-actions {
+    padding: 30px;
+    background: #f8f9fa;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.field-error {
+    color: #ff4444;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.field-error.show {
+    display: block;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #2c5530;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .success-actions {
+        flex-direction: column;
+    }
+}
+</style>
+
+<script>
+// Initialize Add Product functionality
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('addProductForm')) {
+        initializeAddProduct();
+    }
+});
+
+function initializeAddProduct() {
+    loadCategories();
+    setupImageUpload();
+    setupFormSubmission();
+    setupCategoryModal();
+}
+
+// Load categories from API
+async function loadCategories() {
+    try {
+        const response = await fetch('/api/categories/', {
+            headers: {
+                'Authorization': `Token ${getAuthToken()}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        const data = await response.json();
+        const categorySelect = document.getElementById('productCategory');
+        
+        if (data.success) {
+            categorySelect.innerHTML = '<option value="">Select a category</option>';
+            data.categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.category_id;
+                option.textContent = category.name;
+                categorySelect.appendChild(option);
+            });
+        } else {
+            categorySelect.innerHTML = '<option value="">Error loading categories</option>';
+        }
+    } catch (error) {
+        console.error('Error loading categories:', error);
+        document.getElementById('productCategory').innerHTML = '<option value="">Error loading categories</option>';
+    }
+}
+
+// Setup image upload
+function setupImageUpload() {
+    const uploadArea = document.getElementById('imageUploadArea');
+    const fileInput = document.getElementById('productImage');
+    
+    uploadArea.addEventListener('click', () => fileInput.click());
+    
+    fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                showFieldError('productImageError', 'Image size must be less than 5MB');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById('imagePreview');
+                const img = document.getElementById('previewImg');
+                img.src = e.target.result;
+                preview.style.display = 'block';
+                uploadArea.querySelector('.upload-placeholder').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+// Remove image
+function removeImage() {
+    document.getElementById('productImage').value = '';
+    document.getElementById('imagePreview').style.display = 'none';
+    document.getElementById('imageUploadArea').querySelector('.upload-placeholder').style.display = 'block';
+}
+
+// Setup form submission
+function setupFormSubmission() {
+    document.getElementById('addProductForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        if (!validateForm()) {
+            return;
+        }
+        
+        const formData = new FormData();
+        const form = e.target;
+        
+        // Add form fields
+        formData.append('product_name', form.product_name.value);
+        formData.append('description', form.description.value);
+        formData.append('category_ids', JSON.stringify([parseInt(form.category_ids.value)]));
+        formData.append('quantity', parseInt(form.quantity.value));
+        formData.append('quantity_unit', form.quantity_unit.value);
+        formData.append('price', parseFloat(form.price.value));
+        
+        // Add image if selected
+        if (form.image.files[0]) {
+            formData.append('image', form.image.files[0]);
+        }
+        
+        try {
+            showLoading(true);
+            
+            const response = await fetch('/api/farmer/listings/', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Token ${getAuthToken()}`
+                },
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                showSuccess();
+            } else {
+                showFormErrors(data.errors);
+            }
+        } catch (error) {
+            console.error('Error adding product:', error);
+            alert('Error adding product. Please try again.');
+        } finally {
+            showLoading(false);
+        }
+    });
+}
+
+// Validate form
+function validateForm() {
+    clearErrors();
+    let isValid = true;
+    
+    const productName = document.getElementById('productName').value.trim();
+    if (!productName) {
+        showFieldError('productNameError', 'Product name is required');
+        isValid = false;
+    }
+    
+    const category = document.getElementById('productCategory').value;
+    if (!category) {
+        showFieldError('productCategoryError', 'Please select a category');
+        isValid = false;
+    }
+    
+    const quantity = document.getElementById('productQuantity').value;
+    if (!quantity || quantity < 1) {
+        showFieldError('productQuantityError', 'Quantity must be at least 1');
+        isValid = false;
+    }
+    
+    const price = document.getElementById('productPrice').value;
+    if (!price || price < 0) {
+        showFieldError('productPriceError', 'Price must be greater than 0');
+        isValid = false;
+    }
+    
+    return isValid;
+}
+
+// Show field error
+function showFieldError(fieldId, message) {
+    const errorElement = document.getElementById(fieldId);
+    errorElement.textContent = message;
+    errorElement.classList.add('show');
+}
+
+// Clear all errors
+function clearErrors() {
+    document.querySelectorAll('.field-error').forEach(error => {
+        error.classList.remove('show');
+        error.textContent = '';
+    });
+}
+
+// Show form errors from API
+function showFormErrors(errors) {
+    for (const [field, messages] of Object.entries(errors)) {
+        const errorId = field + 'Error';
+        const errorElement = document.getElementById(errorId);
+        if (errorElement) {
+            showFieldError(errorId, messages[0]);
+        }
+    }
+}
+
+// Show loading state
+function showLoading(show) {
+    document.getElementById('loadingIndicator').style.display = show ? 'block' : 'none';
+    document.getElementById('addProductForm').style.display = show ? 'none' : 'block';
+    document.getElementById('submitBtn').disabled = show;
+}
+
+// Show success message
+function showSuccess() {
+    document.getElementById('addProductForm').style.display = 'none';
+    document.getElementById('successMessage').style.display = 'block';
+}
+
+// Reset form
+function resetAddProductForm() {
+    document.getElementById('addProductForm').reset();
+    removeImage();
+    clearErrors();
+    document.getElementById('successMessage').style.display = 'none';
+    document.getElementById('addProductForm').style.display = 'block';
+}
+
+// Category modal functions
+function setupCategoryModal() {
+    document.getElementById('addCategoryBtn').addEventListener('click', openAddCategoryModal);
+    document.getElementById('addCategoryForm').addEventListener('submit', submitNewCategory);
+}
+
+function openAddCategoryModal() {
+    document.getElementById('addCategoryModal').style.display = 'flex';
+}
+
+function closeAddCategoryModal() {
+    document.getElementById('addCategoryModal').style.display = 'none';
+    document.getElementById('addCategoryForm').reset();
+    clearErrors();
+}
+
+async function submitNewCategory(e) {
+    e.preventDefault();
+    
+    const categoryName = document.getElementById('newCategoryName').value.trim();
+    if (!categoryName) {
+        showFieldError('newCategoryNameError', 'Category name is required');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/api/categories/', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Token ${getAuthToken()}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: categoryName })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            closeAddCategoryModal();
+            loadCategories(); // Reload categories
+            // Select the new category
+            setTimeout(() => {
+                document.getElementById('productCategory').value = data.category.category_id;
+            }, 100);
+        } else {
+            showFormErrors(data.errors);
+        }
+    } catch (error) {
+        console.error('Error adding category:', error);
+        alert('Error adding category. Please try again.');
+    }
+}
+
+// Get auth token (you'll need to implement this based on your auth system)
+function getAuthToken() {
+    return localStorage.getItem('farmerToken') || '';
+}
+</script>

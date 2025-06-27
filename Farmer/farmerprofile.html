@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Profile</title>
+  <link rel="stylesheet" href="farmerprofile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>My Farmer Profile</h1>
+    <p class="subtitle">Complete your profile to build trust with buyers</p>
+    
+    <div class="profile-completion">
+      <div class="progress-bar">
+        <div class="progress-fill" id="profileProgress"></div>
+      </div>
+      <p class="progress-text">Profile Completion: <span id="completionPercentage">0%</span></p>
+    </div>
+    
+    <form id="farmerProfileForm">
+      <!-- Personal Information Section -->
+      <div class="form-section">
+        <h2><i class="fas fa-user"></i> Personal Information</h2>
+        
+        <div class="profile-image-container">
+          <div class="profile-image">
+            <img id="profileImagePreview" src="../assets/default-profile.jpg" alt="Profile Image">
+            <div class="image-overlay">
+              <i class="fas fa-camera"></i>
+              <span>Change Photo</span>
+            </div>
+          </div>
+          <input type="file" id="profileImage" name="profileImage" accept="image/*" hidden>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+            <small>This will be visible to buyers</small>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <small>Optional, for notifications only</small>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="location">Location/Village</label>
+          <input type="text" id="location" name="location" required>
+          <small>Be specific to help buyers find you</small>
+        </div>
+      </div>
+      
+      <!-- Farm Information Section -->
+      <div class="form-section">
+        <h2><i class="fas fa-tractor"></i> Farm Information</h2>
+        
+        <div class="form-group">
+          <label for="farmName">Farm/Business Name</label>
+          <input type="text" id="farmName" name="farmName" required>
+          <small>This will be displayed to buyers</small>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="farmingExperience">Years of Farming Experience</label>
+            <select id="farmingExperience" name="farmingExperience">
+              <option value="">Select experience</option>
+              <option value="0-2">0-2 years</option>
+              <option value="3-5">3-5 years</option>
+              <option value="6-10">6-10 years</option>
+              <option value="10+">More than 10 years</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="farmSize">Farm Size (approx.)</label>
+            <select id="farmSize" name="farmSize">
+              <option value="">Select farm size</option>
+              <option value="small">Small (less than 1 hectare)</option>
+              <option value="medium">Medium (1-5 hectares)</option>
+              <option value="large">Large (more than 5 hectares)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="farmingPractices">Farming Practices</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="farmingPractices" value="organic"> Organic
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="farmingPractices" value="traditional"> Traditional
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="farmingPractices" value="conventional"> Conventional
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="farmingPractices" value="sustainable"> Sustainable
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="farmDescription">About Your Farm</label>
+          <textarea id="farmDescription" name="farmDescription" rows="4" placeholder="Tell buyers about your farm, your story, and what makes your products special..."></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Farm Photos (up to 5)</label>
+          <div class="farm-photos-container">
+            <div class="farm-photo-upload">
+              <div class="upload-placeholder">
+                <i class="fas fa-plus"></i>
+                <span>Add Photo</span>
+              </div>
+              <input type="file" class="farm-photo-input" accept="image/*" hidden>
+            </div>
+            <!-- Additional photo slots will be added dynamically -->
+          </div>
+          <small>Show your farm, equipment, or products to build trust</small>
+        </div>
+      </div>
+      
+      <!-- Payment Information Section -->
+      <div class="form-section">
+        <h2><i class="fas fa-money-bill-wave"></i> Payment Information</h2>
+        
+        <div class="form-group">
+          <label for="paymentMethod">Preferred Payment Method</label>
+          <select id="paymentMethod" name="paymentMethod" required>
+            <option value="">Select payment method</option>
+            <option value="momo">Mobile Money</option>
+            <option value="bank">Bank Transfer</option>
+            <option value="cash">Cash on Delivery</option>
+          </select>
+        </div>
+        
+        <div id="momoDetails" class="payment-details">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="momoProvider">Mobile Money Provider</label>
+              <select id="momoProvider" name="momoProvider">
+                <option value="">Select provider</option>
+                <option value="mtn">MTN Mobile Money</option>
+                <option value="orange">Orange Money</option>
+                <option value="airtel">Airtel Money</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="momoNumber">Mobile Money Number</label>
+              <input type="text" id="momoNumber" name="momoNumber">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="momoName">Account Name</label>
+            <input type="text" id="momoName" name="momoName">
+            <small>Must match the name on your Mobile Money account</small>
+          </div>
+        </div>
+        
+        <div id="bankDetails" class="payment-details" style="display: none;">
+          <div class="form-group">
+            <label for="bankName">Bank Name</label>
+            <input type="text" id="bankName" name="bankName">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="accountNumber">Account Number</label>
+              <input type="text" id="accountNumber" name="accountNumber">
+            </div>
+            <div class="form-group">
+              <label for="accountName">Account Name</label>
+              <input type="text" id="accountName" name="accountName">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Delivery Information Section -->
+      <div class="form-section">
+        <h2><i class="fas fa-truck"></i> Delivery Information</h2>
+        
+        <div class="form-group">
+          <label>Delivery Options You Provide</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="deliveryOptions" value="pickup"> Buyer Pickup
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="deliveryOptions" value="local"> Local Delivery
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="deliveryOptions" value="shipping"> Shipping
+            </label>
+          </div>
+        </div>
+        
+        <div id="localDeliveryDetails" class="delivery-details">
+          <div class="form-group">
+            <label for="deliveryAreas">Local Delivery Areas</label>
+            <input type="text" id="deliveryAreas" name="deliveryAreas" placeholder="e.g., Bamenda, Buea, Limbe">
+          </div>
+          <div class="form-group">
+            <label for="deliveryFee">Delivery Fee (CFA)</label>
+            <input type="number" id="deliveryFee" name="deliveryFee" min="0">
+            <small>Enter 0 if delivery is free</small>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="pickupInstructions">Pickup Instructions</label>
+          <textarea id="pickupInstructions" name="pickupInstructions" rows="3" placeholder="Provide details on where and when buyers can pick up products..."></textarea>
+        </div>
+      </div>
+      
+      <!-- Verification Documents Section -->
+      <div class="form-section">
+        <h2><i class="fas fa-shield-alt"></i> Verification</h2>
+        <p class="section-note">Verification helps build trust with buyers. Your documents are securely stored and not shared publicly.</p>
+        
+        <div class="form-group">
+          <label for="idType">ID Type</label>
+          <select id="idType" name="idType">
+            <option value="">Select ID type</option>
+            <option value="national">National ID</option>
+            <option value="passport">Passport</option>
+            <option value="drivers">Driver's License</option>
+            <option value="voter">Voter's Card</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="idDocument">ID Document</label>
+          <div class="file-upload">
+            <button type="button" class="upload-btn" id="idUploadBtn">
+              <i class="fas fa-upload"></i> Upload ID Document
+            </button>
+            <span id="idFileName">No file chosen</span>
+            <input type="file" id="idDocument" name="idDocument" accept="image/*,.pdf" hidden>
+          </div>
+          <small>Upload a clear photo or scan of your ID</small>
+        </div>
+        
+        <div class="verification-status">
+          <p>Verification Status: <span id="verificationStatus">Pending</span></p>
+          <small>Our team will verify your documents within 24-48 hours</small>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+        <button type="submit" class="btn-primary">Save Profile</button>
+      </div>
+    </form>
+  </div>
+  
+  <script src="farmerprofile.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations - Farm2Market</title>
+    <link rel="stylesheet" href="reservations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Manage Reservations</h1>
+            <p>Track and manage all your product reservations from buyers</p>
+            
+            <div class="quick-stats">
+                <div class="stat-item">
+                    <div class="number">0</div>
+                    <div class="label">Pending</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">0</div>
+                    <div class="label">Approved</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">0</div>
+                    <div class="label">Completed</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <!-- Calendar Section -->
+            <div class="calendar-section">
+                <div class="section-header">
+                    <h3>Reservation Calendar</h3>
+                    <div class="calendar-controls">
+                        <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                        <span id="currentMonth">April 2023</span>
+                        <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                
+                <div id="reservationCalendar" class="calendar-container">
+                    <!-- Calendar will be generated here -->
+                </div>
+            </div>
+            
+            <!-- Reservation List Section -->
+            <div class="reservation-list-section">
+                <div class="section-header">
+                    <h3>Reservations</h3>
+                    <div class="filter-controls">
+                        <select id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="completed">Completed</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                        <input type="text" id="searchFilter" placeholder="Search buyer or product">
+                        <button id="refreshBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+                </div>
+                
+                <div id="reservationsList">
+                    <!-- Reservations will be loaded here -->
+                    <div id="noReservations" style="display: none;">
+                        <i class="fas fa-calendar-times"></i>
+                        <p>No reservations found</p>
+                        <p>When buyers reserve your products, they will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Reservation Details Modal -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reservation Details</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Buyer Information -->
+                <div class="detail-section">
+                    <h4>Buyer Information</h4>
+                    <p><strong>Name:</strong> <span id="buyerName"></span></p>
+                    <p><strong>Contact:</strong> <span id="buyerContact"></span></p>
+                    <p><strong>Location:</strong> <span id="buyerLocation"></span></p>
+                </div>
+                
+                <!-- Product Information -->
+                <div class="detail-section">
+                    <h4>Product Information</h4>
+                    <p><strong>Product:</strong> <span id="productName"></span></p>
+                    <p><strong>Quantity:</strong> <span id="productQuantity"></span></p>
+                    <p><strong>Price:</strong> <span id="productPrice"></span></p>
+                    <p><strong>Total:</strong> <span id="totalPrice"></span></p>
+                </div>
+                
+                <!-- Reservation Details -->
+                <div class="detail-section">
+                    <h4>Reservation Details</h4>
+                    <p><strong>Reservation Date:</strong> <span id="reservationDate"></span></p>
+                    <p><strong>Pickup Date:</strong> <span id="pickupDate"></span></p>
+                    <p><strong>Status:</strong> <span id="reservationStatus"></span></p>
+                    <p><strong>Notes:</strong> <span id="reservationNotes"></span></p>
+                </div>
+                
+                <!-- Payment Information (if applicable) -->
+                <div class="detail-section" id="paymentSection">
+                    <h4>Payment Information</h4>
+                    <p><strong>Payment Method:</strong> <span id="paymentMethod"></span></p>
+                    <p><strong>Payment Status:</strong> <span id="paymentStatus"></span></p>
+                    <div class="receipt-image" id="receiptImageContainer">
+                        <p><strong>Payment Receipt:</strong></p>
+                        <img id="receiptImage" src="" alt="Payment Receipt">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" id="modalActions">
+                <!-- Action buttons will be added dynamically based on status -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="reservations.js"></script>
+</body>
+</html>

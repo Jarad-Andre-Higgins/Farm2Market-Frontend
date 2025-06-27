@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Agriport Farmer</title>
+    <link rel="stylesheet" href="notifications.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner">
+            <i class="fas fa-bell fa-spin"></i>
+            <p>Loading your notifications...</p>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="notifications-container" id="notifications-container" style="display: none;">
+        <!-- Header -->
+        <div class="notifications-header">
+            <div class="header-left">
+                <button class="btn-back" onclick="window.history.back()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1><i class="fas fa-bell"></i> Notifications</h1>
+            </div>
+            <div class="header-right">
+                <div class="notification-stats">
+                    <span class="unread-count" id="unread-count">0</span>
+                    <span class="total-count" id="total-count">0 total</span>
+                </div>
+                <button class="btn-mark-all-read" id="btn-mark-all-read">
+                    <i class="fas fa-check-double"></i>
+                    Mark All Read
+                </button>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="notification-filters">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-list"></i>
+                All
+            </button>
+            <button class="filter-btn" data-filter="reservation_pending">
+                <i class="fas fa-clock"></i>
+                Reservations
+            </button>
+            <button class="filter-btn" data-filter="new_message">
+                <i class="fas fa-comments"></i>
+                Messages
+            </button>
+            <button class="filter-btn" data-filter="payment_received">
+                <i class="fas fa-money-bill-wave"></i>
+                Payments
+            </button>
+            <button class="filter-btn" data-filter="system_announcement">
+                <i class="fas fa-bullhorn"></i>
+                System
+            </button>
+            <button class="filter-btn" data-filter="unread">
+                <i class="fas fa-envelope"></i>
+                Unread
+            </button>
+        </div>
+
+        <!-- Notifications List -->
+        <div class="notifications-list" id="notifications-list">
+            <!-- Notifications will be loaded here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination" style="display: none;">
+            <!-- Pagination controls will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Notification Detail Modal -->
+    <div class="modal-overlay" id="notification-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Notification Details</h3>
+                <button class="btn-close-modal" id="btn-close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="notification-detail">
+                    <div class="notification-icon-large" id="modal-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="notification-content-detail">
+                        <h4 id="modal-notification-title">Notification Title</h4>
+                        <p id="modal-notification-message">Notification message content...</p>
+                        <div class="notification-meta">
+                            <span class="notification-time" id="modal-notification-time">2 hours ago</span>
+                            <span class="notification-type" id="modal-notification-type">System</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="notification-actions-detail" id="modal-actions">
+                    <!-- Action buttons will be added here based on notification type -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/farmer-auth.js"></script>
+    <script src="notifications.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mobile Money Receipts</title>
+  <link rel="stylesheet" href="memebership-receipt.css" />
+</head>
+<body>
+  <div class="receipt-container">
+    <h1>Farmer Monthly Membership Fee</h1>
+    <p class="subtitle">Upload and manage your monthly payment receipts</p>
+
+    <div class="tab-bar">
+      <button class="tab active">Upload Receipt</button>
+      <button class="tab">Receipt History</button>
+    </div>
+
+    <form class="receipt-form">
+      <label for="receiptType">Receipt Type</label>
+      <input type="text" id="receiptType" placeholder="e.g. Membership Fee" />
+
+      <label for="transactionname">Transaction NAME</label>
+      <input type="text" id="transactionname" placeholder="e.g. Mbarga Jean" />
+
+      <label for="amount">Amount (CFA)</label>
+      <input type="number" id="amount" placeholder="e.g. 100" />
+
+      <label for="receiptImage">Receipt Image</label>
+      <div class="upload-box">
+        <div class="upload-icon">⬆️</div>
+        <p>Click or drag to upload receipt</p>
+        <input type="file" id="receiptImage" />
+      </div>
+
+      <button type="submit" class="upload-btn">Upload</button>
+    </form>
+  </div>
+</body>
+</html>

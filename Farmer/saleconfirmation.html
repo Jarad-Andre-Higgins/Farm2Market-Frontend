@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sales Confirmation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="saleconfirmation.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Sales Confirmation</h1>
+    
+    <div class="filters">
+      <div class="filter-group">
+        <label for="statusFilter">Status:</label>
+        <select id="statusFilter">
+          <option value="all">All</option>
+          <option value="Pending">Pending</option>
+          <option value="Confirmed">Confirmed</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <label for="dateFilter">Date Range:</label>
+        <input type="date" id="startDate">
+        <span>to</span>
+        <input type="date" id="endDate">
+      </div>
+      
+      <div class="filter-group">
+        <label for="searchFilter">Search:</label>
+        <input type="text" id="searchFilter" placeholder="Search by product or order ID">
+      </div>
+      
+      <button id="applyFilters" class="filter-btn">Apply Filters</button>
+      <button id="resetFilters" class="filter-btn reset">Reset</button>
+    </div>
+
+    <div class="table-container">
+      <table id="salesTable">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Produce</th>
+            <th>Quantity</th>
+            <th>Price (XAF)</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Momo Receipt</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="salesTableBody">
+          <!-- Sales data will be loaded here dynamically -->
+          <tr class="loading-row">
+            <td colspan="8">Loading sales data...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div id="pagination" class="pagination">
+      <!-- Pagination controls will be added here -->
+    </div>
+    
+    <div id="noSales" class="no-data" style="display: none;">
+      <i class="fas fa-shopping-cart"></i>
+      <p>No sales found</p>
+      <p>When buyers purchase your products, they will appear here</p>
+    </div>
+  </div>
+  
+  <!-- Receipt Modal -->
+  <div id="receiptModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Payment Receipt</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="receipt-details">
+          <p><strong>Order ID:</strong> <span id="receiptOrderId"></span></p>
+          <p><strong>Amount:</strong> <span id="receiptAmount"></span> XAF</p>
+          <p><strong>Date:</strong> <span id="receiptDate"></span></p>
+          <p><strong>Payment Method:</strong> <span id="receiptMethod">Mobile Money</span></p>
+          <p><strong>Transaction ID:</strong> <span id="receiptTransactionId"></span></p>
+        </div>
+        <div class="receipt-image">
+          <img id="receiptImage" src="" alt="Payment Receipt">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Confirmation Modal -->
+  <div id="confirmationModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="confirmationTitle">Confirm Sale</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmationMessage">Are you sure you want to confirm this sale? This will update your inventory and mark the sale as completed.</p>
+        <div class="confirmation-buttons">
+          <button id="cancelAction" class="cancel-btn">Cancel</button>
+          <button id="confirmAction" class="confirm-btn">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Notification -->
+  <div id="notification" class="notification">
+    <div class="notification-content">
+      <i id="notificationIcon" class="fas fa-check-circle"></i>
+      <span id="notificationMessage">Operation successful</span>
+    </div>
+  </div>
+  
+  <script src="../endpoint/API integratiion.js"></script>
+  <script src="saleconfirmation.js"></script>
+</body>
+</html>

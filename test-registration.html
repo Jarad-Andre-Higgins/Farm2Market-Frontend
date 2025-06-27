@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Farmer Registration - Farm2Market</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c5530, #4CAF50);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .registration-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c5530;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c5530;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2c5530;
+            box-shadow: 0 0 0 2px rgba(44, 85, 48, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .btn-primary {
+            width: 100%;
+            background: #2c5530;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #1e3a21;
+        }
+        
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2c5530;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .message.success {
+            background: #e8f5e8;
+            color: #2e7d32;
+            border: 1px solid #4CAF50;
+        }
+        
+        .message.error {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #f44336;
+        }
+        
+        .test-data {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .test-data h3 {
+            color: #2c5530;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .test-data button {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+        
+        .test-data button:hover {
+            background: #5a6268;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .registration-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <div class="header">
+            <h1><i class="fas fa-seedling"></i> Test Farmer Registration</h1>
+            <p>Test the farmer registration and approval system</p>
+        </div>
+        
+        <!-- Test Data Helper -->
+        <div class="test-data">
+            <h3><i class="fas fa-flask"></i> Quick Fill Test Data:</h3>
+            <button onclick="fillTestData1()">Test Farmer 1</button>
+            <button onclick="fillTestData2()">Test Farmer 2</button>
+            <button onclick="clearForm()">Clear Form</button>
+        </div>
+        
+        <!-- Messages -->
+        <div id="successMessage" class="message success">
+            <i class="fas fa-check-circle"></i>
+            <span id="successText"></span>
+        </div>
+        
+        <div id="errorMessage" class="message error">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errorText"></span>
+        </div>
+        
+        <!-- Loading -->
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Registering farmer...</p>
+        </div>
+        
+        <!-- Registration Form -->
+        <form id="registrationForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="first_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="last_name" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="username">Username *</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" id="phoneNumber" name="phone_number" placeholder="+237 6XX XXX XXX">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" required minlength="8">
+                </div>
+                <div class="form-group">
+                    <label for="passwordConfirm">Confirm Password *</label>
+                    <input type="password" id="passwordConfirm" name="password_confirm" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="userType">User Type *</label>
+                <select id="userType" name="user_type" required>
+                    <option value="">Select user type</option>
+                    <option value="Farmer" selected>Farmer</option>
+                    <option value="Buyer">Buyer</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn-primary" id="submitBtn">
+                <i class="fas fa-user-plus"></i> Register Farmer
+            </button>
+        </form>
+        
+        <div style="margin-top: 20px; text-align: center; font-size: 12px; color: #666;">
+            <p><strong>Testing Instructions:</strong></p>
+            <p>1. Fill the form and register</p>
+            <p>2. Check Django admin for approval</p>
+            <p>3. Test login after approval</p>
+        </div>
+    </div>
+
+    <script>
+        // Test data sets
+        function fillTestData1() {
+            document.getElementById('firstName').value = 'John';
+            document.getElementById('lastName').value = 'Farmer';
+            document.getElementById('username').value = 'johnfarmer';
+            document.getElementById('email').value = 'john.farmer@test.com';
+            document.getElementById('phoneNumber').value = '+237 612 345 678';
+            document.getElementById('password').value = 'farmer123';
+            document.getElementById('passwordConfirm').value = 'farmer123';
+            document.getElementById('userType').value = 'Farmer';
+        }
+        
+        function fillTestData2() {
+            document.getElementById('firstName').value = 'Mary';
+            document.getElementById('lastName').value = 'Grower';
+            document.getElementById('username').value = 'marygrower';
+            document.getElementById('email').value = 'mary.grower@test.com';
+            document.getElementById('phoneNumber').value = '+237 698 765 432';
+            document.getElementById('password').value = 'grower123';
+            document.getElementById('passwordConfirm').value = 'grower123';
+            document.getElementById('userType').value = 'Farmer';
+        }
+        
+        function clearForm() {
+            document.getElementById('registrationForm').reset();
+            hideMessages();
+        }
+        
+        function showMessage(type, text) {
+            hideMessages();
+            const messageElement = document.getElementById(type + 'Message');
+            const textElement = document.getElementById(type + 'Text');
+            textElement.textContent = text;
+            messageElement.style.display = 'block';
+        }
+        
+        function hideMessages() {
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+        
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+            document.getElementById('registrationForm').style.display = show ? 'none' : 'block';
+            document.getElementById('submitBtn').disabled = show;
+        }
+        
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Validate passwords match
+            if (data.password !== data.password_confirm) {
+                showMessage('error', 'Passwords do not match');
+                return;
+            }
+            
+            try {
+                showLoading(true);
+                hideMessages();
+                
+                const response = await fetch('http://localhost:8000/api/auth/register/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    if (result.requires_approval) {
+                        showMessage('success', 
+                            'Registration successful! Your farmer account is pending admin approval. ' +
+                            'You will receive an email once approved. Check the Django admin panel to approve.'
+                        );
+                    } else {
+                        showMessage('success', 'Registration successful! You can now login.');
+                    }
+                    document.getElementById('registrationForm').reset();
+                } else {
+                    let errorMsg = 'Registration failed: ';
+                    if (result.errors) {
+                        const errors = Object.values(result.errors).flat();
+                        errorMsg += errors.join(', ');
+                    } else {
+                        errorMsg += 'Unknown error';
+                    }
+                    showMessage('error', errorMsg);
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                showMessage('error', 'Network error. Make sure the Django server is running on localhost:8000');
+            } finally {
+                showLoading(false);
+            }
+        });
+    </script>
+</body>
+</html>
