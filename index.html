@@ -18,22 +18,34 @@
                 <img src="assets/logo.png" alt="Farm2Market Logo">
                 <h1>Farm2<span>Market</span></h1>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#testimonials">Success Stories</a></li>
-                    <li>
-                        <select class="language-selector" id="languageSelector">
+            <nav id="mainNav" class="main-nav">
+                <ul id="navMenu" class="nav-menu">
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="#testimonials" class="nav-link">Success Stories</a></li>
+                    <li class="nav-item--language">
+                        <select class="language-selector" id="languageSelector" aria-label="Select language">
                             <option value="en">English</option>
                             <option value="fr">Français</option>
                         </select>
                     </li>
+                    <li class="nav-item--mobile-only">
+                        <a href="Farmer/loginfarmer.html" class="nav-link nav-link--button">Login</a>
+                    </li>
+                    <li class="nav-item--mobile-only">
+                        <a href="Farmer/signupfarmer.html" class="nav-link nav-link--button nav-link--primary">Sign Up</a>
+                    </li>
                 </ul>
             </nav>
-            <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                <i class="fas fa-bars"></i>
+            <div class="nav-buttons">
+                <a href="Farmer/loginfarmer.html" class="btn btn-outline">Login</a>
+                <a href="Farmer/signupfarmer.html" class="btn btn-primary">Sign Up</a>
             </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="navMenu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
     </header>
 
