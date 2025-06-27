@@ -23,7 +23,12 @@
                     <li><a href="Farmer/loginfarmer.html" class="btn btn-small">Login</a></li>
                 </ul>
             </nav>
-            <button id="mobileMenuToggle" class="mobile-menu-toggle">☰</button>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="navMenu">
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+            </button>
+            <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
         </div>
     </header>
 
