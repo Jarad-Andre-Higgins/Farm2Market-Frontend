@@ -39,58 +39,422 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h2>Connecting Farmers Directly to Buyers</h2>
-            <p>Farm2Market bridges the gap between local farmers and buyers, creating a fair and transparent marketplace for fresh produce.</p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">5,000+</span>
-                    <span class="stat-label">Farmers Connected</span>
+        <div class="hero__container">
+            <div class="hero__content">
+                <div class="hero__text">
+                    <h1 class="hero__title hero-animate-fade-up">
+                        Connecting Farmers and Buyers
+                        <span class="hero__title-highlight"> Across Cameroon</span>
+                    </h1>
+
+                    <p class="hero__subtitle hero-animate-fade-up">
+                        Farm2Market bridges the gap between local farmers and buyers,
+                        enabling direct trade, fair prices, and fresh produce delivery
+                        throughout Cameroon.
+                    </p>
+
+                    <div class="hero__features">
+                        <div class="hero__feature">
+                            <div class="hero__feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span>Direct Trade</span>
+                        </div>
+
+                        <div class="hero__feature">
+                            <div class="hero__feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 11.5C15.8 11.5 16.5 12.2 16.5 13S15.8 14.5 15 14.5 13.5 13.8 13.5 13 14.2 11.5 15 11.5M5 12C5.8 12 6.5 12.7 6.5 13.5S5.8 15 5 15 3.5 14.3 3.5 13.5 4.2 12 5 12M12 13.5C12.8 13.5 13.5 14.2 13.5 15S12.8 16.5 12 16.5 10.5 15.8 10.5 15 11.2 13.5 12 13.5M12 20C16 20 20 16 20 12S16 4 12 4 4 8 4 12 8 20 12 20Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>Fair Prices</span>
+                        </div>
+
+                        <div class="hero__feature">
+                            <div class="hero__feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span>Fresh Delivery</span>
+                        </div>
+                    </div>
+
+                    <div class="hero__cta hero-animate-fade-up">
+                        <button class="hero__cta-button btn btn-primary" data-role="farmer">
+                            Join as Farmer
+                        </button>
+
+                        <button class="hero__cta-button btn btn-secondary" data-role="buyer">
+                            Join as Buyer
+                        </button>
+                    </div>
+
+                    <div class="hero__stats hero-animate-fade-up">
+                        <div class="hero__stat">
+                            <div class="hero__stat-number">500+</div>
+                            <div class="hero__stat-label">Active Farmers</div>
+                        </div>
+
+                        <div class="hero__stat">
+                            <div class="hero__stat-number">1,200+</div>
+                            <div class="hero__stat-label">Happy Buyers</div>
+                        </div>
+
+                        <div class="hero__stat">
+                            <div class="hero__stat-number">10+</div>
+                            <div class="hero__stat-label">Regions Covered</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat">
-                    <span class="stat-number">30%</span>
-                    <span class="stat-label">Higher Profits</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">10</span>
-                    <span class="stat-label">Regions Covered</span>
+
+                <div class="hero__image hero-animate-slide-left">
+                    <div class="hero__image-container">
+                        <img
+                            src="assets/farmer.jpg"
+                            alt="Farmer with fresh produce"
+                            class="hero__image-main"
+                            loading="eager"
+                        />
+
+                        <div class="hero__image-overlay">
+                            <div class="hero__image-badge">
+                                <span class="hero__image-badge-text">Fresh from Farm</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="cta-buttons">
-                <a href="Farmer/joinfarmer.html" class="btn btn-primary">I'm a Farmer</a>
-                <a href="Buyer/joinbuyer.html" class="btn btn-secondary">I'm a Buyer</a>
+
+            <div class="hero__scroll-indicator">
+                <div class="hero__scroll-text">Discover More</div>
+                <div class="hero__scroll-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 13L12 18L17 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 6L12 11L17 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Key Features</h2>
-                <p>Discover how Farm2Market empowers farmers and makes buying fresh produce easier than ever</p>
+        <div class="features__container">
+            <div class="features__header features-animate-fade-up">
+                <h2 class="features__title">
+                    Why Choose Farm2Market?
+                </h2>
+                <p class="features__subtitle">
+                    Our platform provides everything you need for successful agricultural trade
+                </p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-money-bill-wave"></i>
+
+            <div class="features__grid">
+                <!-- Direct Connection Feature -->
+                <div class="features__card features-animate-stagger" data-stagger-index="0">
+                    <div class="features__card-body">
+                        <div class="features__card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="features__card-title">
+                            Direct Farmer-Buyer Connection
+                        </h3>
+
+                        <p class="features__card-description">
+                            Eliminate middlemen and connect directly with local farmers for fresher produce and better prices.
+                        </p>
+
+                        <ul class="features__card-benefits">
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                No middleman fees
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Direct communication
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Build relationships
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Support local farmers
+                            </li>
+                        </ul>
                     </div>
-                    <h3>For Farmers</h3>
-                    <p>List your products, manage inventory, receive payments directly, and grow your customer base.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-search"></i>
+
+                <!-- Real-Time Messaging Feature -->
+                <div class="features__card features-animate-stagger" data-stagger-index="1">
+                    <div class="features__card-body">
+                        <div class="features__card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 9H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 13H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="features__card-title">
+                            Real-Time Messaging
+                        </h3>
+
+                        <p class="features__card-description">
+                            Communicate instantly with farmers and buyers through our integrated messaging system.
+                        </p>
+
+                        <ul class="features__card-benefits">
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Instant notifications
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Photo sharing
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Order discussions
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Negotiation support
+                            </li>
+                        </ul>
                     </div>
-                    <h3>For Buyers</h3>
-                    <p>Find fresh, local produce directly from farmers near you with transparent pricing and quality.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+
+                <!-- Secure Transactions Feature -->
+                <div class="features__card features-animate-stagger" data-stagger-index="2">
+                    <div class="features__card-body">
+                        <div class="features__card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="features__card-title">
+                            Secure Transactions
+                        </h3>
+
+                        <p class="features__card-description">
+                            Safe and secure payment processing with multiple payment options including mobile money.
+                        </p>
+
+                        <ul class="features__card-benefits">
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Mobile money support
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Escrow protection
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Transaction history
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Dispute resolution
+                            </li>
+                        </ul>
                     </div>
-                    <h3>Trust System</h3>
-                    <p>Verified farmer profiles, customer reviews, and secure Mobile Money transactions.</p>
+                </div>
+
+                <!-- Market Analytics Feature -->
+                <div class="features__card features-animate-stagger" data-stagger-index="3">
+                    <div class="features__card-body">
+                        <div class="features__card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 9L12 6L16 10L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 4H18V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="features__card-title">
+                            Market Analytics
+                        </h3>
+
+                        <p class="features__card-description">
+                            Access real-time market data, price trends, and insights to make informed decisions.
+                        </p>
+
+                        <ul class="features__card-benefits">
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Price tracking
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Demand forecasting
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Seasonal trends
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Performance metrics
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Quality Assurance Feature -->
+                <div class="features__card features-animate-stagger" data-stagger-index="4">
+                    <div class="features__card-body">
+                        <div class="features__card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="features__card-title">
+                            Quality Assurance
+                        </h3>
+
+                        <p class="features__card-description">
+                            Verified farmers, quality ratings, and customer reviews ensure you get the best produce.
+                        </p>
+
+                        <ul class="features__card-benefits">
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Farmer verification
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Quality ratings
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Customer reviews
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Freshness guarantee
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Logistics Support Feature -->
+                <div class="features__card features-animate-stagger" data-stagger-index="5">
+                    <div class="features__card-body">
+                        <div class="features__card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 3H3L5 17H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 8H20L23 12V16H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5.5 20.5C6.32843 20.5 7 19.8284 7 19C7 18.1716 6.32843 17.5 5.5 17.5C4.67157 17.5 4 18.1716 4 19C4 19.8284 4.67157 20.5 5.5 20.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M18.5 20.5C19.3284 20.5 20 19.8284 20 19C20 18.1716 19.3284 17.5 18.5 17.5C17.6716 17.5 17 18.1716 17 19C17 19.8284 17.6716 20.5 18.5 20.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="features__card-title">
+                            Logistics Support
+                        </h3>
+
+                        <p class="features__card-description">
+                            Flexible delivery options including pickup, local delivery, and logistics partnerships.
+                        </p>
+
+                        <ul class="features__card-benefits">
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Flexible pickup
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Local delivery
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Logistics partners
+                            </li>
+                            <li class="features__card-benefit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Order tracking
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features__cta">
+                <p class="features__cta-text">
+                    Ready to transform your agricultural business?
+                </p>
+                <div class="features__cta-buttons">
+                    <button class="features__cta-button features__cta-button--primary" data-role="farmer">
+                        Start Selling
+                    </button>
+                    <button class="features__cta-button features__cta-button--secondary" data-role="buyer">
+                        Start Buying
+                    </button>
                 </div>
             </div>
         </div>
@@ -98,67 +462,571 @@
 
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="section-title">
-                <h2>How It Works</h2>
-                <p>Simple steps to get started with Farm2Market</p>
+        <div class="how-it-works__container">
+            <div class="how-it-works__header how-it-works-animate-fade-up">
+                <h2 class="how-it-works__title">How It Works</h2>
+                <p class="how-it-works__subtitle">
+                    Simple steps to start trading fresh produce
+                </p>
             </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Create Account</h3>
-                    <p>Sign up as a farmer or buyer in just a few minutes</p>
+
+            <div class="how-it-works__tabs how-it-works-animate-slide-right">
+                <button class="how-it-works__tab how-it-works__tab--active" data-tab="farmer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
+                    For Farmers
+                </button>
+
+                <button class="how-it-works__tab" data-tab="buyer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 17.5304 17.2107 18.0391 17.5858 18.4142C17.9609 18.7893 18.4696 19 19 19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    For Buyers
+                </button>
+            </div>
+
+            <!-- Farmer Steps -->
+            <div class="how-it-works__steps how-it-works-animate-slide-left" data-steps="farmer">
+                <div class="how-it-works__step">
+                    <div class="how-it-works__step-number">1</div>
+
+                    <div class="how-it-works__step-content">
+                        <div class="how-it-works__step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="how-it-works__step-title">
+                            Create Your Farm Profile
+                        </h3>
+
+                        <p class="how-it-works__step-description">
+                            Sign up and create a detailed profile showcasing your farm, products, and certifications.
+                        </p>
+
+                        <ul class="how-it-works__step-details">
+                            <li class="how-it-works__step-detail">Upload farm photos</li>
+                            <li class="how-it-works__step-detail">Add certifications</li>
+                            <li class="how-it-works__step-detail">Set business hours</li>
+                            <li class="how-it-works__step-detail">Verify your identity</li>
+                        </ul>
+                    </div>
+
+                    <div class="how-it-works__step-connector">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>List or Browse</h3>
-                    <p>Farmers list their products, buyers browse available produce</p>
+
+                <div class="how-it-works__step">
+                    <div class="how-it-works__step-number">2</div>
+
+                    <div class="how-it-works__step-content">
+                        <div class="how-it-works__step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 17.5304 17.2107 18.0391 17.5858 18.4142C17.9609 18.7893 18.4696 19 19 19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="how-it-works__step-title">
+                            List Your Products
+                        </h3>
+
+                        <p class="how-it-works__step-description">
+                            Add your fresh produce with photos, descriptions, prices, and availability.
+                        </p>
+
+                        <ul class="how-it-works__step-details">
+                            <li class="how-it-works__step-detail">Upload product photos</li>
+                            <li class="how-it-works__step-detail">Set competitive prices</li>
+                            <li class="how-it-works__step-detail">Manage inventory</li>
+                            <li class="how-it-works__step-detail">Update availability</li>
+                        </ul>
+                    </div>
+
+                    <div class="how-it-works__step-connector">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Connect & Transact</h3>
-                    <p>Communicate directly and arrange payment & delivery</p>
+
+                <div class="how-it-works__step">
+                    <div class="how-it-works__step-number">3</div>
+
+                    <div class="how-it-works__step-content">
+                        <div class="how-it-works__step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10 9H9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="how-it-works__step-title">
+                            Receive & Manage Orders
+                        </h3>
+
+                        <p class="how-it-works__step-description">
+                            Get notified of new orders, communicate with buyers, and manage your sales.
+                        </p>
+
+                        <ul class="how-it-works__step-details">
+                            <li class="how-it-works__step-detail">Instant notifications</li>
+                            <li class="how-it-works__step-detail">Chat with buyers</li>
+                            <li class="how-it-works__step-detail">Confirm orders</li>
+                            <li class="how-it-works__step-detail">Track payments</li>
+                        </ul>
+                    </div>
+
+                    <div class="how-it-works__step-connector">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Grow Together</h3>
-                    <p>Build lasting relationships through our platform</p>
+
+                <div class="how-it-works__step">
+                    <div class="how-it-works__step-number">4</div>
+
+                    <div class="how-it-works__step-content">
+                        <div class="how-it-works__step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 11.5C15.8 11.5 16.5 12.2 16.5 13S15.8 14.5 15 14.5 13.5 13.8 13.5 13 14.2 11.5 15 11.5M5 12C5.8 12 6.5 12.7 6.5 13.5S5.8 15 5 15 3.5 14.3 3.5 13.5 4.2 12 5 12M12 13.5C12.8 13.5 13.5 14.2 13.5 15S12.8 16.5 12 16.5 10.5 15.8 10.5 15 11.2 13.5 12 13.5M12 20C16 20 20 16 20 12S16 4 12 4 4 8 4 12 8 20 12 20Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="how-it-works__step-title">
+                            Deliver & Earn
+                        </h3>
+
+                        <p class="how-it-works__step-description">
+                            Fulfill orders through pickup or delivery and receive secure payments.
+                        </p>
+
+                        <ul class="how-it-works__step-details">
+                            <li class="how-it-works__step-detail">Flexible delivery</li>
+                            <li class="how-it-works__step-detail">Secure payments</li>
+                            <li class="how-it-works__step-detail">Customer feedback</li>
+                            <li class="how-it-works__step-detail">Build reputation</li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Buyer Steps -->
+            <div class="how-it-works__steps how-it-works-animate-slide-left" data-steps="buyer" style="display: none;">
+                <div class="how-it-works__step">
+                    <div class="how-it-works__step-number">1</div>
+
+                    <div class="how-it-works__step-content">
+                        <div class="how-it-works__step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="how-it-works__step-title">
+                            Browse Fresh Produce
+                        </h3>
+
+                        <p class="how-it-works__step-description">
+                            Discover local farmers and browse their fresh, quality produce in your area.
+                        </p>
+
+                        <ul class="how-it-works__step-details">
+                            <li class="how-it-works__step-detail">Search by location</li>
+                            <li class="how-it-works__step-detail">Filter by category</li>
+                            <li class="how-it-works__step-detail">View farmer profiles</li>
+                            <li class="how-it-works__step-detail">Check availability</li>
+                        </ul>
+                    </div>
+
+                    <div class="how-it-works__step-connector">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="how-it-works__step">
+                    <div class="how-it-works__step-number">2</div>
+
+                    <div class="how-it-works__step-content">
+                        <div class="how-it-works__step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 9H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 13H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="how-it-works__step-title">
+                            Connect with Farmers
+                        </h3>
+
+                        <p class="how-it-works__step-description">
+                            Chat directly with farmers, ask questions, and negotiate prices for bulk orders.
+                        </p>
+
+                        <ul class="how-it-works__step-details">
+                            <li class="how-it-works__step-detail">Direct messaging</li>
+                            <li class="how-it-works__step-detail">Photo sharing</li>
+                            <li class="how-it-works__step-detail">Price negotiation</li>
+                            <li class="how-it-works__step-detail">Quality inquiries</li>
+                        </ul>
+                    </div>
+
+                    <div class="how-it-works__step-connector">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="how-it-works__step">
+                    <div class="how-it-works__step-number">3</div>
+
+                    <div class="how-it-works__step-content">
+                        <div class="how-it-works__step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 17.5304 17.2107 18.0391 17.5858 18.4142C17.9609 18.7893 18.4696 19 19 19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="how-it-works__step-title">
+                            Place Your Order
+                        </h3>
+
+                        <p class="how-it-works__step-description">
+                            Add items to cart, choose delivery options, and place secure orders.
+                        </p>
+
+                        <ul class="how-it-works__step-details">
+                            <li class="how-it-works__step-detail">Easy cart management</li>
+                            <li class="how-it-works__step-detail">Multiple payment options</li>
+                            <li class="how-it-works__step-detail">Delivery scheduling</li>
+                            <li class="how-it-works__step-detail">Order confirmation</li>
+                        </ul>
+                    </div>
+
+                    <div class="how-it-works__step-connector">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="how-it-works__step">
+                    <div class="how-it-works__step-number">4</div>
+
+                    <div class="how-it-works__step-content">
+                        <div class="how-it-works__step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 3H3L5 17H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 8H20L23 12V16H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5.5 20.5C6.32843 20.5 7 19.8284 7 19C7 18.1716 6.32843 17.5 5.5 17.5C4.67157 17.5 4 18.1716 4 19C4 19.8284 4.67157 20.5 5.5 20.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M18.5 20.5C19.3284 20.5 20 19.8284 20 19C20 18.1716 19.3284 17.5 18.5 17.5C17.6716 17.5 17 18.1716 17 19C17 19.8284 17.6716 20.5 18.5 20.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="how-it-works__step-title">
+                            Receive Fresh Produce
+                        </h3>
+
+                        <p class="how-it-works__step-description">
+                            Get your fresh produce delivered or pick it up, and rate your experience.
+                        </p>
+
+                        <ul class="how-it-works__step-details">
+                            <li class="how-it-works__step-detail">Track delivery</li>
+                            <li class="how-it-works__step-detail">Quality guarantee</li>
+                            <li class="how-it-works__step-detail">Rate & review</li>
+                            <li class="how-it-works__step-detail">Reorder easily</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="how-it-works__cta">
+                <button class="how-it-works__cta-button btn btn-primary" data-role="farmer">
+                    Get Started as Farmer
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Success Stories</h2>
-                <p>Hear from farmers and buyers who are thriving with Farm2Market</p>
+        <div class="testimonials__container">
+            <div class="testimonials__header testimonials-animate-fade-up">
+                <h2 class="testimonials__title">
+                    What Our Community Says
+                </h2>
+                <p class="testimonials__subtitle">
+                    Real stories from farmers and buyers across Cameroon
+                </p>
             </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Since joining Farm2Market, my income has increased by 40%. I now sell directly to restaurants in Yaoundé and have expanded my farm."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="assets/farmer-testimonial.jpg" alt="Farmer">
-                        <div class="author-info">
-                            <h4>Jean-Pierre Mbarga</h4>
-                            <p>Vegetable Farmer, Central Region</p>
+
+            <div class="testimonials__carousel testimonials-animate-scale-up">
+                <div class="testimonials__main">
+                    <div class="testimonials__featured">
+                        <div class="testimonials__featured-content">
+                            <div class="testimonials__quote">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 21C3 17.4 3 14.8 3 12.2C3 6.4 7.6 2 13.4 2C15.1 2 16.7 2.4 18.1 3.2L16.9 5.5C15.8 4.9 14.6 4.6 13.4 4.6C9.1 4.6 5.6 8.1 5.6 12.4V21H3Z" fill="currentColor"/>
+                                    <path d="M22 21C22 17.4 22 14.8 22 12.2C22 6.4 17.4 2 11.6 2C9.9 2 8.3 2.4 6.9 3.2L8.1 5.5C9.2 4.9 10.4 4.6 11.6 4.6C15.9 4.6 19.4 8.1 19.4 12.4V21H22Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+
+                            <p class="testimonials__featured-text" data-testimonial="content">
+                                Farm2Market has transformed my business! I now sell directly to restaurants and hotels in Douala. My income has increased by 60% and I have built lasting relationships with my customers.
+                            </p>
+
+                            <div class="testimonials__featured-rating" data-testimonial="rating">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                                </svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                                </svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                                </svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                                </svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                                </svg>
+                            </div>
+
+                            <div class="testimonials__featured-author">
+                                <div class="testimonials__featured-avatar">
+                                    <img data-testimonial="avatar" src="https://ui-avatars.com/api/?name=Marie%20Ngozi&background=16a34a&color=fff&size=80" alt="Marie Ngozi" />
+                                </div>
+
+                                <div class="testimonials__featured-info">
+                                    <h4 class="testimonials__featured-name" data-testimonial="name">
+                                        Marie Ngozi
+                                    </h4>
+                                    <p class="testimonials__featured-role" data-testimonial="role">
+                                        Vegetable Farmer
+                                    </p>
+                                    <p class="testimonials__featured-location" data-testimonial="location">
+                                        Douala, Littoral
+                                    </p>
+                                </div>
+
+                                <div class="testimonials__featured-badge">
+                                    <span class="testimonials__badge testimonials__badge--farmer" data-testimonial="badge">
+                                        🌱 Farmer
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"As a restaurant owner, Farm2Market has transformed how I source ingredients. I get fresher produce at better prices."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="assets/buyer-testimonial.jpg" alt="Buyer">
-                        <div class="author-info">
-                            <h4>Marie Atangana</h4>
-                            <p>Restaurant Owner, Douala</p>
+
+                <div class="testimonials__indicators">
+                    <button class="testimonials__indicator testimonials__indicator--active" data-index="0" aria-label="View testimonial 1"></button>
+                    <button class="testimonials__indicator" data-index="1" aria-label="View testimonial 2"></button>
+                    <button class="testimonials__indicator" data-index="2" aria-label="View testimonial 3"></button>
+                    <button class="testimonials__indicator" data-index="3" aria-label="View testimonial 4"></button>
+                    <button class="testimonials__indicator" data-index="4" aria-label="View testimonial 5"></button>
+                    <button class="testimonials__indicator" data-index="5" aria-label="View testimonial 6"></button>
+                </div>
+            </div>
+
+            <div class="testimonials__grid">
+                <div class="testimonials__card">
+                    <div class="testimonials__card-header">
+                        <div class="testimonials__card-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Marie%20Ngozi&background=16a34a&color=fff&size=48" alt="Marie Ngozi" />
                         </div>
+
+                        <div class="testimonials__card-info">
+                            <h4 class="testimonials__card-name">Marie Ngozi</h4>
+                            <p class="testimonials__card-role">Vegetable Farmer</p>
+                        </div>
+
+                        <span class="testimonials__badge testimonials__badge--farmer">
+                            🌱
+                        </span>
                     </div>
+
+                    <div class="testimonials__card-rating">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                    </div>
+
+                    <p class="testimonials__card-content">
+                        Farm2Market has transformed my business! I now sell directly to restaurants and hotels in Douala...
+                    </p>
+                </div>
+
+                <div class="testimonials__card">
+                    <div class="testimonials__card-header">
+                        <div class="testimonials__card-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Jean-Baptiste%20Foka&background=16a34a&color=fff&size=48" alt="Jean-Baptiste Foka" />
+                        </div>
+
+                        <div class="testimonials__card-info">
+                            <h4 class="testimonials__card-name">Jean-Baptiste Foka</h4>
+                            <p class="testimonials__card-role">Restaurant Owner</p>
+                        </div>
+
+                        <span class="testimonials__badge testimonials__badge--buyer">
+                            🛒
+                        </span>
+                    </div>
+
+                    <div class="testimonials__card-rating">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                    </div>
+
+                    <p class="testimonials__card-content">
+                        The quality of produce I get through Farm2Market is exceptional. Fresh vegetables delivered the same day...
+                    </p>
+                </div>
+
+                <div class="testimonials__card">
+                    <div class="testimonials__card-header">
+                        <div class="testimonials__card-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Aminata%20Sow&background=16a34a&color=fff&size=48" alt="Aminata Sow" />
+                        </div>
+
+                        <div class="testimonials__card-info">
+                            <h4 class="testimonials__card-name">Aminata Sow</h4>
+                            <p class="testimonials__card-role">Fruit Farmer</p>
+                        </div>
+
+                        <span class="testimonials__badge testimonials__badge--farmer">
+                            🌱
+                        </span>
+                    </div>
+
+                    <div class="testimonials__card-rating">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                    </div>
+
+                    <p class="testimonials__card-content">
+                        Before Farm2Market, I struggled to find buyers for my mangoes and avocados. Now I have regular customers...
+                    </p>
+                </div>
+
+                <div class="testimonials__card">
+                    <div class="testimonials__card-header">
+                        <div class="testimonials__card-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Paul%20Mbarga&background=16a34a&color=fff&size=48" alt="Paul Mbarga" />
+                        </div>
+
+                        <div class="testimonials__card-info">
+                            <h4 class="testimonials__card-name">Paul Mbarga</h4>
+                            <p class="testimonials__card-role">Grocery Store Owner</p>
+                        </div>
+
+                        <span class="testimonials__badge testimonials__badge--buyer">
+                            🛒
+                        </span>
+                    </div>
+
+                    <div class="testimonials__card-rating">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="testimonials__star">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                    </div>
+
+                    <p class="testimonials__card-content">
+                        I love being able to source fresh produce directly from local farmers. The prices are fair, the quality is great...
+                    </p>
+                </div>
+            </div>
+
+            <div class="testimonials__stats">
+                <div class="testimonials__stat">
+                    <div class="testimonials__stat-number">4.9/5</div>
+                    <div class="testimonials__stat-label">Average Rating</div>
+                </div>
+
+                <div class="testimonials__stat">
+                    <div class="testimonials__stat-number">500+</div>
+                    <div class="testimonials__stat-label">Happy Farmers</div>
+                </div>
+
+                <div class="testimonials__stat">
+                    <div class="testimonials__stat-number">1,200+</div>
+                    <div class="testimonials__stat-label">Satisfied Buyers</div>
+                </div>
+
+                <div class="testimonials__stat">
+                    <div class="testimonials__stat-number">10,000+</div>
+                    <div class="testimonials__stat-label">Successful Orders</div>
                 </div>
             </div>
         </div>
