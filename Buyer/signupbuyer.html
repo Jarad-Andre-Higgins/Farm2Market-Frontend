@@ -3,62 +3,208 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign Up as a Buyer</title>
+  <title>Join Farm2Market - Buyer Registration</title>
   <link rel="stylesheet" href="signupbuyer.css" />
+  <link rel="stylesheet" href="../css/register-form.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Sign Up as a Buyer</h1>
+  <div class="register-form">
+    <div class="register-form__header">
+      <h1 class="register-form__title">Join Farm2Market</h1>
+      <p class="register-form__subtitle">
+        Create your account and start connecting with farmers
+      </p>
+    </div>
 
-    <form id="buyerSignupForm" novalidate>
-      <h2>Personal Info</h2>
+    <div class="register-form__role-selector">
+      <div class="register-form__role-tabs">
+        <button
+          type="button"
+          class="register-form__role-tab"
+          data-role="farmer"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          I'm a Farmer
+        </button>
 
-      <div class="row-group">
-        <div class="input-container">
-          <input type="text" id="firstName" class="form-input" placeholder="First Name" required />
-          <span class="error-message" id="firstNameError"></span>
+        <button
+          type="button"
+          class="register-form__role-tab register-form__role-tab--active"
+          data-role="buyer"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V17C17 17.5304 17.2107 18.0391 17.5858 18.4142C17.9609 18.7893 18.4696 19 19 19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          I'm a Buyer
+        </button>
+      </div>
+
+      <p class="register-form__role-description">
+        Buy fresh produce directly from local farmers
+      </p>
+    </div>
+
+    <form id="registerForm" class="register-form__form" novalidate>
+      <input type="hidden" id="role" name="role" value="buyer">
+
+      <div class="register-form__error" id="apiError" style="display: none;" role="alert">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 9V13M12 17H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span id="apiErrorText"></span>
+      </div>
+
+      <div class="register-form__row">
+        <div class="register-form__field">
+          <label class="register-form__label" for="firstName">First Name</label>
+          <div class="register-form__input-wrapper">
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="register-form__input"
+              placeholder="Enter your first name"
+              required
+            >
+            <span class="register-form__field-error" id="firstNameError"></span>
+          </div>
         </div>
-        <div class="input-container">
-          <input type="text" id="lastName" class="form-input" placeholder="Last Name" required />
-          <span class="error-message" id="lastNameError"></span>
+
+        <div class="register-form__field">
+          <label class="register-form__label" for="lastName">Last Name</label>
+          <div class="register-form__input-wrapper">
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="register-form__input"
+              placeholder="Enter your last name"
+              required
+            >
+            <span class="register-form__field-error" id="lastNameError"></span>
+          </div>
         </div>
       </div>
 
-      <div class="input-container">
-        <input type="tel" id="phoneNumber" class="form-input" placeholder="Phone Number (e.g., 237 6XX XXX XXX)" required />
-        <span class="error-message" id="phoneNumberError"></span>
-      </div>
-      
-      <div class="input-container">
-        <input type="email" id="email" class="form-input" placeholder="Email Address" required />
-        <span class="error-message" id="emailError"></span>
-      </div>
-      
-      <div class="input-container">
-        <input type="text" id="location" class="form-input" placeholder="Location / City" required />
-        <span class="error-message" id="locationError"></span>
+      <div class="register-form__field">
+        <label class="register-form__label" for="email">Email Address</label>
+        <div class="register-form__input-wrapper register-form__input-wrapper--with-icon">
+          <svg class="register-form__input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="register-form__input register-form__input--with-icon"
+            placeholder="Enter your email"
+            required
+          >
+          <span class="register-form__field-error" id="emailError"></span>
+        </div>
       </div>
 
-      <div class="info-message">
-        <p>A secure password will be generated and sent to your email after registration.</p>
+      <div class="register-form__field">
+        <label class="register-form__label" for="phoneNumber">Phone Number</label>
+        <div class="register-form__input-wrapper register-form__input-wrapper--with-icon">
+          <svg class="register-form__input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08V3.08C5.16 3.68 4.68 4.16 4.08 4.16H2.08C2.08 7.6 4.4 10.92 7.84 10.92V8.92C7.84 8.32 8.32 7.84 8.92 7.84H11.92C12.52 7.84 13 8.32 13 8.92V11.92C13 12.52 12.52 13 11.92 13H8.92C8.32 13 7.84 12.52 7.84 11.92V10.92C4.4 10.92 2.08 7.6 2.08 4.16H4.08C4.68 4.16 5.16 3.68 5.16 3.08V0.08C5.16 -0.52 4.68 -1 4.08 -1H1.08C0.48 -1 0 -0.52 0 0.08C0 11.6 9.4 21 20.92 21C21.52 21 22 20.52 22 19.92V16.92C22 16.32 21.52 15.84 20.92 15.84H17.92C17.32 15.84 16.84 16.32 16.84 16.92V19.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input
+            type="tel"
+            id="phoneNumber"
+            name="phoneNumber"
+            class="register-form__input register-form__input--with-icon"
+            placeholder="Enter your phone number (e.g., +237123456789)"
+            required
+          >
+          <span class="register-form__field-error" id="phoneNumberError"></span>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>
-          <input type="checkbox" id="termsAgreement" required>
-          I agree to the <a href="../privacy-policy.html" target="_blank">Privacy Policy</a> and <a href="../terms-of-service.html" target="_blank">Terms of Service</a>
+      <div class="register-form__field">
+        <label class="register-form__label" for="password">Password</label>
+        <div class="register-form__input-wrapper register-form__input-wrapper--with-icon">
+          <svg class="register-form__input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="16" r="1" fill="currentColor"/>
+            <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="register-form__input register-form__input--with-icon"
+            placeholder="Create a password"
+            required
+          >
+          <span class="register-form__field-error" id="passwordError"></span>
+        </div>
+      </div>
+
+      <div class="register-form__field">
+        <label class="register-form__label" for="confirmPassword">Confirm Password</label>
+        <div class="register-form__input-wrapper register-form__input-wrapper--with-icon">
+          <svg class="register-form__input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="16" r="1" fill="currentColor"/>
+            <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            class="register-form__input register-form__input--with-icon"
+            placeholder="Confirm your password"
+            required
+          >
+          <span class="register-form__field-error" id="confirmPasswordError"></span>
+        </div>
+      </div>
+
+      <div class="register-form__checkboxes">
+        <label class="register-form__checkbox">
+          <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required>
+          <span class="register-form__checkbox-mark"></span>
+          <span class="register-form__checkbox-label">
+            I agree to the
+            <a href="../terms-of-service.html" target="_blank" class="register-form__link">Terms of Service</a>
+            and
+            <a href="../privacy-policy.html" target="_blank" class="register-form__link">Privacy Policy</a>
+          </span>
         </label>
-        <span class="error-message" id="termsError"></span>
+        <span class="register-form__checkbox-error" id="agreeToTermsError"></span>
+
+        <label class="register-form__checkbox">
+          <input type="checkbox" id="subscribeToNewsletter" name="subscribeToNewsletter" checked>
+          <span class="register-form__checkbox-mark"></span>
+          <span class="register-form__checkbox-label">
+            Subscribe to our newsletter for updates and tips
+          </span>
+        </label>
       </div>
 
-      <button type="submit" class="submit-btn">Create Buyer Account</button>
-
-      <p class="note">You'll receive a confirmation email with your login credentials once your account is created.</p>
-      <p class="login-link">Already have an account? <a href="loginbuyer.html">Login here</a></p>
+      <button
+        type="submit"
+        class="register-form__submit-button"
+        id="submitButton"
+      >
+        Create Buyer Account
+      </button>
     </form>
+
+    <div class="register-form__footer">
+      <p>
+        Already have an account?
+        <a href="loginbuyer.html" class="register-form__login-link">Sign in here</a>
+      </p>
+    </div>
   </div>
 
-  <script src="../js/buyer-auth.js"></script>
+  <script src="../js/register-form.js"></script>
   <script src="signupbuyer.js"></script>
 </body>
 </html>
